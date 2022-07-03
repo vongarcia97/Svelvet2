@@ -3,6 +3,10 @@
   import Footer from '../components/Footer.svelte';
   import TopNav from '../components/TopNav.svelte';
   import '../app.css';
+
+  // import supabase: this is the top level component and the entry point of our supabase client
+  import { supabase } from '../supabaseClient.js';
+  console.log(supabase);
 </script>
 
 {#if $page.url.pathname === '/testingplayground'}
