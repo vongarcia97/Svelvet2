@@ -64,8 +64,10 @@
     "@supabase/supabase-js": "^1.35.4",
     "acorn": "^8.7.1",
     "codemirror": "^5.65.6",
+    "cookie": "^0.5.0",
     "d3-zoom": "^3.0.0",
     "estree-walker": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
     "marked": "^4.0.17",
     "svelte-json-tree": "^1.0.0",
     "yootils": "^0.3.1"

@@ -3,9 +3,13 @@
   import { page } from '$app/stores';
   import MobileHomeNav from './MobileHomeNav.svelte';
   import MobileDocsNav from './MobileDocsNav.svelte';
+  import {auth, signOut} from '$lib/supabase-db';
+
+
 
   $: activeLink = `${$page.url.pathname}`;
   let y: number;
+
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -60,9 +64,25 @@
       class="hover:text-rose-500 {activeLink.includes('playground') ? 'text-rose-500' : ''}">Playground</a
     >
     <!-- Add logic for OAuth and conditionally render if the user is logged in, change button text to sign out and vice versa -->
-    <button>Log in TESTING</button>
+    <div class="login-container" >
+      <button
+      on:click={async() => await auth.signIn({provider: 'github'})}
+      id="auth"
+      class="hover:text-rose-500 {activeLink.includes('login') ? 'text-rose-500' : ''}">Login with</button>
+    </div>
+    <div class="login-container" >
+      <button
+      on:click={async() => await signOut()}
+      id="auth"
+      class="hover:text-rose-500 {activeLink.includes('login') ? 'text-rose-500' : ''}">sign out</button>
+    </div>
   </nav>
 </div>
 
+
 <style>
+.login-container {
+  display: flex,
+
+}
 </style>
