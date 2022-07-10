@@ -19,7 +19,7 @@ export const signInWithGithub = async function signInWithGithub() {
   const { user, session, error } = await supabase.auth.signIn({
     provider: 'github',
   })
-}
+};
 
 // this returns the current logged in user
 export const userInfo = supabase.auth.user();
