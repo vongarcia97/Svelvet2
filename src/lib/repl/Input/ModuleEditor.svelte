@@ -2,8 +2,6 @@
 	import { getContext, onMount } from 'svelte';
 	import CodeMirror from '../CodeMirror.svelte';
 	import Message from '../Message.svelte';
-	// import new top nav bar created
-	// import TopNavBar from './TopNavBar.svelte'
 
 	const { bundle, selected, handle_change, register_module_editor } = getContext('REPL');
 
@@ -70,9 +68,7 @@
 	}
 </style>
 
-<!-- <div class="editor-navbar">
-	<button on:click={() => console.log(editor.getCodeEditorValue())}>TESTING SAVE BUTTON</button>
-</div> -->
+
 
 <div class="editor-wrapper">
 	<div class="editor notranslate" translate="no">

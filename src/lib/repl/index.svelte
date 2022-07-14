@@ -8,6 +8,8 @@
 	import Output from './Output/index.svelte';
 	import Bundler from './Bundler.js';
 	import { is_browser } from './env.js';
+	import clipboardIcon from '../../assets/copy to clipboard.svg';
+	import saveIcon from '../../assets/save icon.svg';
 
 	export let packagesUrl = 'https://unpkg.com';
 	export let svelteUrl = `${packagesUrl}/svelte`;
@@ -267,17 +269,26 @@
 	$: mobile = width < 540;
 
 	$: $toggleable = mobile && orientation === 'columns';
+
 </script>
 
 <svelte:window on:beforeunload={beforeUnload} />
 
-<div class="editor-navbar">
-	<button on:click={() => module_editor.getCodeEditorValue()}>TESTING SAVE BUTTON</button>
-	<button on:click={() => module_editor.loadSavedCode()}>TEST LOAD BUTTON</button>
-</div>
+
+
 
 
 <div class="container" class:toggleable={$toggleable} bind:clientWidth={width}>
+	<div class="editor-navbar">
+		<input id="project-name" value="">
+		<button on:click={module_editor.copyCodeEditor()}>
+			<img src={clipboardIcon} />
+		</button>
+		<button on:click={module_editor.getCodeEditorValue()}>
+			<img src={saveIcon} />
+		</button>
+		<button on:click={module_editor.loadSavedCode()}>LOAD</button>
+	</div>
 	<div class="viewport" class:output={show_output}>
 		<SplitPane
 			type={orientation === 'rows' ? 'vertical' : 'horizontal'}
@@ -300,6 +311,10 @@
 </div>
 
 <style>
+	.editor-navbar{
+		display: inline-flex;
+		justify-content: flex-end;
+	}
 	.container {
 		position: relative;
 		width: 100%;

@@ -79,12 +79,26 @@
 		if (editor) editor.getAllMarks().forEach(m => m.clear());
 	}
 
+	export async function copyCodeEditor() {
+		const code_to_copy = editor.getValue();
+
+		const copyToClipboard = () => {
+  		if (navigator && navigator.clipboard && navigator.clipboard.writeText){
+    		return navigator.clipboard.writeText(code_to_copy);
+			}
+  		return Promise.reject('The Clipboard API is not available.');
+		};
+
+		copyToClipboard();
+	}
+
+
 	export async function getCodeEditorValue() {
 		// get code from the editor
 		const codeToSave = editor.getValue();
 	  addCodeToDB(codeToSave, $user_email);
-	  const canvas = document.getElementById('.s-UBc7zV9kI3Rx');
-		const dataURL = canvas?.getContext('2d')
+	  // const canvas = document.getElementById('.s-UBc7zV9kI3Rx');
+		// const dataURL = canvas?.getContext('2d')
 		console.log(dataURL);
 	}
 	
