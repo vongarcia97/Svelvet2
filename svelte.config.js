@@ -28,22 +28,22 @@ import vercel from '@sveltejs/adapter-vercel'
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	// preprocess: preprocess(),
+	preprocess: preprocess(),
 
 	kit: {
 		trailingSlash: 'always',
 		adapter: vercel({
-			// pages: 'build',
-			// assets: 'build',
-			// fallback: '200.html',
-			// precompress: false,
+			pages: 'build',
+			assets: 'build',
+			fallback: '200.html',
+			precompress: false,
 			external: [],
 			edge: false,
 			split: false,
 		}),
-		// prerender: {
-		// 	default: false
-		// },
+		prerender: {
+			default: false
+		},
 		vite: {
       define: {
         'process.env': process.env,
