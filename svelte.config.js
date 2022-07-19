@@ -44,6 +44,9 @@ const config = {
 			default: false
 		},
 		vite: {
+      define: {
+        'process.env': process.env,
+      },
 			optimizeDeps: {
 				include: [
 					'codemirror',
